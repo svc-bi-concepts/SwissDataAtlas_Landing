@@ -28,7 +28,7 @@
     <!-- Tailwind CDN fallback for development -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <style>
         .prose h2 {
             font-family: 'Syne', sans-serif;
@@ -38,6 +38,7 @@
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
+
         .prose p {
             margin-bottom: 1rem;
             line-height: 1.7;
@@ -61,7 +62,8 @@
 
                 <div class="flex items-center space-x-2 sm:space-x-4">
                     <!-- Language Switcher -->
-                    <div class="language-switcher flex bg-white/10 backdrop-blur-sm p-0.5 sm:p-1 rounded-lg text-[10px] sm:text-xs font-bold flex-shrink-0">
+                    <div
+                        class="language-switcher flex bg-white/10 backdrop-blur-sm p-0.5 sm:p-1 rounded-lg text-[10px] sm:text-xs font-bold flex-shrink-0">
                         <button onclick="setLang('de')" id="btn-de"
                             class="active px-2 sm:px-3 py-1 rounded-md transition-all bg-white/20 text-white border border-transparent">DE</button>
                         <button onclick="setLang('en')" id="btn-en"
@@ -88,7 +90,7 @@
     <main id="main-content" class="flex-1 py-12 sm:py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="prose prose-lg max-w-none text-slate-700">
-                
+
                 <h2 data-t="section-1-title"></h2>
                 <p data-t="section-1-p1"></p>
                 <p data-t="section-1-p2"></p>
@@ -108,7 +110,8 @@
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-500 py-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs">
             <div class="flex items-center space-x-2 mb-4 md:mb-0">
                 <img src="images/logo-bc.svg" alt="Swiss Data Atlas" class="w-6 h-6" loading="lazy" />
                 <span class="font-bold text-white">Swiss Data Atlas</span>
@@ -118,7 +121,8 @@
             <div class="flex space-x-8">
                 <a href="impressum.html" class="hover:text-white transition-colors" data-t="footer-impressum"></a>
                 <a href="privacy-policy.html" class="hover:text-white transition-colors" data-t="footer-privacy"></a>
-                <a href="terms-and-conditions.html" class="hover:text-white transition-colors text-white" data-t="footer-terms"></a>
+                <a href="terms-and-conditions.html" class="hover:text-white transition-colors text-white"
+                    data-t="footer-terms"></a>
             </div>
         </div>
     </footer>
@@ -131,15 +135,15 @@
                 "footer-impressum": "Impressum",
                 "footer-privacy": "Datenschutz",
                 "footer-terms": "AGB",
-                
+
                 "section-1-title": "Haftungsausschluss",
                 "section-1-p1": "Obwohl BI Concepts grösste Sorgfalt darauf verwendet hat, die Richtigkeit der veröffentlichten Informationen sicherzustellen, kann keine Gewähr für die Richtigkeit, Zuverlässigkeit, Aktualität oder Vollständigkeit dieser Informationen übernommen werden.",
                 "section-1-p2": "BI Concepts behält sich das Recht vor, den Inhalt ganz oder teilweise ohne vorherige Ankündigung zu ändern oder zu entfernen.",
                 "section-1-p3": "In keinem Fall haftet BI Concepts für Schäden materieller oder immaterieller Art, die aus dem Zugang zu, der Nutzung oder Nichtnutzung der veröffentlichten Informationen oder aus dem Missbrauch der Verbindung oder technischen Störungen entstehen.",
-                
+
                 "section-2-title": "Links",
                 "section-2-p1": "Links zu Webseiten Dritter liegen ausserhalb des Verantwortungsbereichs von BI Concepts. Der Zugriff auf und die Nutzung solcher Webseiten erfolgt auf eigenes Risiko des Nutzers. BI Concepts erklärt ausdrücklich, dass es keinerlei Einfluss auf die Gestaltung, den Inhalt oder die Angebote der verlinkten Seiten hat. Die Verantwortung für Informationen und Dienstleistungen verlinkter Seiten liegt ausschliesslich bei den jeweiligen Dritten.",
-                
+
                 "section-3-title": "Urheberrecht",
                 "section-3-p1": "Copyright, BI Concepts.",
                 "section-3-p2": "Informationen auf den Webseiten von BI Concepts sind öffentlich zugänglich. Das Herunterladen oder Kopieren von Texten, Abbildungen, Fotos oder anderen Daten begründet keinen Übergang von Rechten am Inhalt.",
@@ -151,15 +155,15 @@
                 "footer-impressum": "Imprint",
                 "footer-privacy": "Privacy Policy",
                 "footer-terms": "Terms & Conditions",
-                
+
                 "section-1-title": "Limitation of liability",
                 "section-1-p1": "Although every care has been taken by BI Concepts to ensure the accuracy of the information published, no warranty can be given in respect of the accuracy, reliability, up-to-dateness or completeness of this information.",
                 "section-1-p2": "BI Concepts reserves the right to alter or remove the content, in full or in part, without prior notice.",
                 "section-1-p3": "In no event will BI Concepts be liable for any loss or damage of a material or immaterial nature arising from access to, use or non-use of published information, or from misuse of the connection or technical faults.",
-                
+
                 "section-2-title": "Links",
                 "section-2-p1": "Links to third party websites lie outside the scope of responsibility of BI Concepts. Access and use of such websites occurs entirely at the user's own risk. BI Concepts expressly states that it has no influence whatsoever over the content of any linked site. Responsibility for information and services of linked sites rests entirely with the relevant third parties.",
-                
+
                 "section-3-title": "Copyright",
                 "section-3-p1": "Copyright, BI Concepts.",
                 "section-3-p2": "Information on the BI Concepts' websites is accessible to the public. Downloading or copying of texts, illustrations, photos or any other data does not entail any transfer of rights on the content.",
@@ -188,12 +192,12 @@
                 btnDe.className = "px-2 sm:px-3 py-1 rounded-md transition-all text-white/60 hover:text-white border border-transparent";
                 document.documentElement.lang = "en";
             }
-            
+
             localStorage.setItem('sda-lang', lang);
         }
 
         lucide.createIcons();
-        
+
         // Initialize with stored language preference
         const storedLang = localStorage.getItem('sda-lang') || 'de';
         setLang(storedLang);
