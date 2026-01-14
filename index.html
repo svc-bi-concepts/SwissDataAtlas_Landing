@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiss Data Atlas | BI Concepts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap');
+
+        body {
+            background-color: #ffffff;
+            color: #101010;
+            font-family: 'Darker Grotesque', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.3em;
+            scroll-behavior: smooth;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 50px;
+            font-weight: 600;
+            line-height: 1.25em;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 56px;
+            font-weight: 600;
+            line-height: 1em;
+        }
+
+        /* Webflow heading styles */
+        .heading__1 {
+            color: var(--black, #101010);
+            text-transform: uppercase;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.09em;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .heading__1.heading-light {
+            color: #ffffff;
+        }
+
+        .heading__2 {
+            font-size: 56px;
+            line-height: 1em;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-weight: 600;
+            color: #101010;
+        }
+
+        /* Responsive heading sizes */
+        @media (max-width: 991px) {
+            .heading__1 {
+                font-size: 50px;
+            }
+
+            .heading__2 {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .heading__1 {
+                font-size: 36px;
+            }
+
+            .heading__2 {
+                font-size: 30px;
+            }
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.25em;
+        }
+
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-weight: 600;
+            line-height: 1.25em;
+        }
+
+        p {
+            margin-bottom: 0;
+            font-family: 'Darker Grotesque', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.3em;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        .gradient-bg {
+            /* Align hero with BI Concepts dark navy / purple gradient */
+            background: linear-gradient(150deg, #050a32 0%, #3a199c 50%, #050a32 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hyphenate {
+            hyphens: auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .primary-accent {
+            background-color: #0095f2;
+        }
+
+        .primary-accent:hover {
+            background-color: #3c0089;
+        }
+
+        /* Webflow-style button - pill shaped with rounded edges */
+        .button-webflow {
+            border: 1px solid #0095f2;
+            text-align: center;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 9999px;
+            padding: 18px 40px;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.2em;
+            color: #0095f2;
+            background-color: transparent;
+            text-decoration: none;
+            transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .button-webflow:hover {
+            background-color: #0095f2;
+            color: #ffffff;
+        }
+
+        .button-webflow-filled {
+            border: 1px solid #0095f2;
+            background-color: #0095f2;
+            color: #ffffff;
+            border-radius: 9999px;
+            padding: 18px 40px;
+            font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.2em;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .button-webflow-filled:hover {
+            background-color: #3c0089;
+            border-color: #3c0089;
+            color: #ffffff;
+        }
+
+        /* Navigation styling to match Webflow */
+        .nav-link-webflow {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+            padding: 10px 15px;
+        }
+
+        .nav-link-webflow:hover {
+            color: #7bdaff;
+        }
+
+        /* Navigation scrolled state - dark background over white sections */
+        nav.nav-scrolled {
+            background-color: #050a32 !important;
+            backdrop-filter: blur(10px);
+        }
+
+        nav.nav-scrolled .nav-link-webflow {
+            color: #ffffff;
+        }
+
+        nav.nav-scrolled .nav-link-webflow:hover {
+            color: #7bdaff;
+        }
+
+        nav.nav-scrolled .nav-logo-text {
+            color: #ffffff !important;
+        }
+
+        nav.nav-scrolled .button-webflow {
+            border-color: #0095f2;
+            color: #0095f2;
+            background-color: transparent;
+        }
+
+        nav.nav-scrolled .button-webflow:hover {
+            background-color: #0095f2;
+            color: #ffffff;
+        }
+
+        nav.nav-scrolled .language-switcher {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        nav.nav-scrolled .language-switcher button {
+            color: #ffffff !important;
+        }
+
+        nav.nav-scrolled .language-switcher button.active {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        /* Section tag styling */
+        .section-tag {
+            color: #0095f2;
+            text-transform: uppercase;
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+        }
+    </style>
+</head>
+
+<body class="transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-transparent backdrop-blur-md" style="height: 80px;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div class="flex justify-between h-full items-center">
+                <div class="flex items-center space-x-2 min-w-0">
+                    <div class="bg-[#0095f2] p-1.5 rounded-lg flex-shrink-0">
+                        <i data-lucide="database" class="text-white w-5 h-5"></i>
+                    </div>
+                    <span class="nav-logo-text font-bold text-base sm:text-lg tracking-tight text-white truncate"
+                        style="font-family: 'Syne', sans-serif;">Swiss Data
+                        Atlas</span>
+                </div>
+
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <div class="hidden md:flex space-x-2 mr-2">
+                        <a href="#features" data-t="nav-features" class="nav-link-webflow"></a>
+                        <a href="#methodology" data-t="nav-method" class="nav-link-webflow"></a>
+                        <a href="#compliance" data-t="nav-compliance" class="nav-link-webflow"></a>
+                    </div>
+
+                    <!-- Language Switcher -->
+                    <div
+                        class="language-switcher flex bg-white/10 backdrop-blur-sm p-0.5 sm:p-1 rounded-lg text-[10px] sm:text-xs font-bold flex-shrink-0">
+                        <button onclick="setLang('de')" id="btn-de"
+                            class="active px-2 sm:px-3 py-1 rounded-md transition-all bg-white/20 text-white border border-transparent">DE</button>
+                        <button onclick="setLang('en')" id="btn-en"
+                            class="px-2 sm:px-3 py-1 rounded-md transition-all text-white/60 hover:text-white border border-transparent">EN</button>
+                    </div>
+
+                    <a href="mailto:sda@bi-concepts.ch" class="hidden lg:block button-webflow text-sm">
+                        Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 gradient-bg text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <div class="w-full max-w-2xl relative">
+                <div class="absolute -inset-4 bg-blue-500/20 blur-3xl rounded-full"></div>
+                <div class="glass-card rounded-2xl p-4 sm:p-8 relative border border-white/10 overflow-hidden">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400">snowflake_query.sql</span>
+                    </div>
+                    <div
+                        class="space-y-4 font-mono text-xs sm:text-sm md:text-base overflow-x-auto custom-scrollbar whitespace-nowrap pb-4">
+                        <p class="text-blue-400">SELECT <span class="text-white">company_name, industry_standard,
+                                management_power</span></p>
+                        <p class="text-blue-400">FROM <span
+                                class="text-white">BI_CONCEPTS.SWISS_DATA_ATLAS.CORE_ASSETS</span></p>
+                        <p class="text-blue-400">WHERE <span class="text-white">market_status = 'Active';</span></p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
+                        <div class="p-3 bg-white/5 rounded-lg border border-white/5">
+                            <p class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-t="stats-entities">
+                            </p>
+                            <p class="text-xl sm:text-2xl font-bold">700K+</p>
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-lg border border-white/5">
+                            <p class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-t="stats-update">
+                            </p>
+                            <p class="text-xl sm:text-2xl font-bold" data-t="stats-daily"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <a href="mailto:sda@bi-concepts.ch"
+                    class="button-webflow-filled inline-flex items-center justify-center">
+                    <span data-t="hero-cta-main"></span>
+                    <i data-lucide="mail" class="ml-2 w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Capabilities -->
+    <section id="features" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="section-tag mb-4" data-t="feat-tag"></h2>
+                <h2 class="heading__2 text-center mb-6" data-t="feat-title"></h2>
+                <p class="mt-4 max-w-2xl text-base sm:text-lg text-[#101010]/70 mx-auto leading-relaxed"
+                    data-t="feat-desc"></p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                <div
+                    class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition-all flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
+                        style="background-color: rgba(0, 149, 242, 0.1);">
+                        <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6" style="color: #0095f2;"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 leading-tight" data-t="feat-1-title"></h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed hyphenate" data-t="feat-1-desc"></p>
+                </div>
+
+                <div
+                    class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition-all flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
+                        style="background-color: rgba(0, 149, 242, 0.1);">
+                        <i data-lucide="tags" class="w-5 h-5 sm:w-6 sm:h-6" style="color: #0095f2;"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 leading-tight" data-t="feat-2-title"></h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed hyphenate" data-t="feat-2-desc"></p>
+                </div>
+
+                <div
+                    class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition-all flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
+                        style="background-color: rgba(0, 149, 242, 0.1);">
+                        <i data-lucide="history" class="w-5 h-5 sm:w-6 sm:h-6" style="color: #0095f2;"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 leading-tight" data-t="feat-3-title"></h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed hyphenate" data-t="feat-3-desc"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology" class="py-16 sm:py-24 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex items-center gap-12 xl:gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="heading__1 heading-light mb-4 sm:mb-6" data-t="method-title"></h2>
+                    <p class="text-sm sm:text-base lg:text-lg text-slate-400 mb-8 sm:mb-10 leading-relaxed"
+                        data-t="method-desc"></p>
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-sm sm:text-base"
+                                style="background-color: #0095f2;">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base mb-1" data-t="method-1-title"></h4>
+                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-t="method-1-desc"></p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-sm sm:text-base"
+                                style="background-color: #0095f2;">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base mb-1" data-t="method-2-title"></h4>
+                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-t="method-2-desc"></p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-sm sm:text-base"
+                                style="background-color: #0095f2;">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base mb-1" data-t="method-3-title"></h4>
+                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-t="method-3-desc"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 mt-12 lg:mt-0 flex justify-center">
+                    <div class="glass-card p-10 sm:p-14 lg:p-16 rounded-full border-2 border-white/5 animate-pulse">
+                        <i data-lucide="refresh-cw" class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
+                            style="color: #0095f2;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FSI Strategy -->
+    <section id="compliance" class="py-16 sm:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-white p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h2 class="heading__2 mb-4" data-t="fsi-title"></h2>
+                    <p class="text-sm sm:text-base text-slate-600" data-t="fsi-desc"></p>
+                </div>
+                <div
+                    class="md:w-2/3 grid sm:grid-cols-2 gap-6 sm:gap-8 border-l border-slate-100 pl-0 md:pl-10 lg:pl-12">
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base mb-2" data-t="fsi-1-title"></h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-t="fsi-1-desc"></p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base mb-2" data-t="fsi-2-title"></h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-t="fsi-2-desc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-20 sm:py-24 bg-white text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="heading__2 text-center mb-6" data-t="cta-title"></h2>
+            <a href="mailto:sda@bi-concepts.ch" class="button-webflow-filled inline-flex items-center">
+                <i data-lucide="mail" class="mr-3 w-6 h-6"></i>
+                sda@bi-concepts.ch
+            </a>
+            <div class="mt-12 pt-12 border-t border-slate-100 flex flex-col items-center">
+                <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">BI CONCEPTS
+                </p>
+                <p class="text-slate-500 text-xs sm:text-sm">Oberdorfstrasse 13, 8808 Pfäffikon, Switzerland</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-500 py-10 border-t border-white/5">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <i data-lucide="database" class="w-4 h-4" style="color: #0095f2;"></i>
+                <span class="font-bold text-white">Swiss Data Atlas</span>
+                <span>© 2026 <a href="https://www.bi-concepts.ch" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-white transition-colors underline">BI Concepts</a>.</span>
+            </div>
+            <div class="flex space-x-8">
+                <a href="impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="privacy-policy.html" class="hover:text-white transition-colors">Datenschutz</a>
+                <a href="terms-and-conditions.html" class="hover:text-white transition-colors">Terms and Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            de: {
+                "nav-features": "Kernkompetenzen",
+                "nav-method": "Methodik",
+                "nav-compliance": "Strategie",
+                "hero-tag": "Snowflake Marketplace Listing",
+                "hero-cta-main": "Jetzt Zugang anfragen",
+                "stats-entities": "Aktive Firmenprofile",
+                "stats-update": "Update-Intervall",
+                "stats-daily": "Daily Sync",
+                "feat-tag": "Key Features",
+                "feat-title": "Strukturierte Insights für Ihr Unternehmen.",
+                "feat-desc": "Wir transformieren öffentliche Datensätze in hochgradig abfragbare Business-Strukturen für Governance- und Marktanalysen.",
+                "feat-1-title": "Management-Strukturen",
+                "feat-1-desc": "Profile zu Zeichnungsberechtigungen zur Validierung von Vollmachten und allfälligen Vernetzungen.",
+                "feat-2-title": "Sektor-Standardisierung",
+                "feat-2-desc": "Automatisierte Zuordnung von Geschäftszwecken zu NOGA-Codes für exakte Marktsegmentierung und Peer-Group-Vergleiche.",
+                "feat-3-title": "Entwicklungshistorie",
+                "feat-3-desc": "Nachverfolgung von Statusänderungen, Namenswechseln und weiteren Änderungen über die gesamte Lebensdauer.",
+                "method-title": "Effizientes Data Engineering",
+                "method-desc": "Unser Framework stellt sicher, dass komplexe Primärdaten als verwaltete Assets für Ihren ROI zur Verfügung stehen.",
+                "method-1-title": "Datenbeschaffung",
+                "method-1-desc": "Konsolidierung aus offiziellen Registern und öffentlichen Quellen für höchste Datenintegrität.",
+                "method-2-title": "Anreicherung",
+                "method-2-desc": "Strukturierung unstrukturierter Texte und Verknüpfung von Management-Beziehungen.",
+                "method-3-title": "Bereitstellung",
+                "method-3-desc": "Nahtlose Publikation in Ihrer Snowflake-Umgebung für sofortige Integration in BI-Tools.",
+                "fsi-title": "Optimiert für den Finanzsektor",
+                "fsi-desc": "Eine präzise Datenbasis für modernes Risikomanagement und Compliance.",
+                "fsi-1-title": "KYC & Due Diligence",
+                "fsi-1-desc": "Beschleunigen Sie Onboarding-Prozesse durch sofort verfügbare Management-Checks und Firmenprofile.",
+                "fsi-2-title": "Exposure-Analysen",
+                "fsi-2-desc": "Identifizieren Sie Branchenkonzentrationen und sektorale Abhängigkeiten basierend auf standardisierten Klassifizierungen.",
+                "cta-title": "Bereit für datengesteuerte Insights?",
+                "footer-impressum": "Impressum",
+                "footer-privacy": "Datenschutz"
+            },
+            en: {
+                "nav-features": "Capabilities",
+                "nav-method": "Methodology",
+                "nav-compliance": "Strategy",
+                "hero-tag": "Snowflake Marketplace Listing",
+                "hero-cta-main": "Request Access Now",
+                "stats-entities": "Active Company Profiles",
+                "stats-update": "Update Interval",
+                "stats-daily": "Daily Sync",
+                "feat-tag": "Key Features",
+                "feat-title": "Structured Insights for Your Business.",
+                "feat-desc": "We transform public datasets into highly queryable business structures for compliance and market analysis.",
+                "feat-1-title": "Management Structures",
+                "feat-1-desc": "Detailed profiles of executives and signatory powers for validating authority and hierarchies.",
+                "feat-2-title": "Sector Standardization",
+                "feat-2-desc": "Automated mapping of business purposes to NOGA codes for precise market segmentation.",
+                "feat-3-title": "Evolution History",
+                "feat-3-desc": "Seamless tracking of status changes, name changes, and company transfers over time.",
+                "method-title": "Efficient Data Engineering",
+                "method-desc": "Our framework ensures complex primary data is available as managed assets for your ROI.",
+                "method-1-title": "Data Acquisition",
+                "method-1-desc": "Consolidation from official registers and public sources for maximum data integrity.",
+                "method-2-title": "Enrichment",
+                "method-2-desc": "Structuring unstructured text and linking management relationships for deep insights.",
+                "method-3-title": "Deployment",
+                "method-3-desc": "Seamless publication in your Snowflake environment for immediate BI tool integration.",
+                "fsi-title": "Optimized for Financial Services",
+                "fsi-desc": "A precise data foundation for modern risk management and compliance.",
+                "fsi-1-title": "KYC & Due Diligence",
+                "fsi-1-desc": "Accelerate onboarding processes with instantly available management checks and profiles.",
+                "fsi-2-title": "Exposure Analysis",
+                "fsi-2-desc": "Identify industry concentrations and sectoral dependencies based on standardized classifications.",
+                "cta-title": "Ready for Data-Driven Insights?",
+                "footer-impressum": "Impressum",
+                "footer-privacy": "Privacy Policy"
+            }
+        };
+
+        function setLang(lang) {
+            const elements = document.querySelectorAll('[data-t]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            const btnDe = document.getElementById('btn-de');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'de') {
+                btnDe.className = "active px-2 sm:px-3 py-1 rounded-md transition-all bg-white/20 text-white border border-transparent";
+                btnEn.className = "px-2 sm:px-3 py-1 rounded-md transition-all text-white/60 hover:text-white border border-transparent";
+                document.documentElement.lang = "de";
+            } else {
+                btnEn.className = "active px-2 sm:px-3 py-1 rounded-md transition-all bg-white/20 text-white border border-transparent";
+                btnDe.className = "px-2 sm:px-3 py-1 rounded-md transition-all text-white/60 hover:text-white border border-transparent";
+                document.documentElement.lang = "en";
+            }
+        }
+
+        lucide.createIcons();
+
+        // Initialize page with default language (German)
+        setLang('de');
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const heroSection = document.querySelector('header.gradient-bg');
+            const heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 0;
+
+            if (window.scrollY > heroBottom - 80) {
+                nav.classList.add('nav-scrolled');
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                if (window.scrollY > 20) {
+                    nav.classList.add('shadow-md');
+                } else {
+                    nav.classList.remove('shadow-md');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
