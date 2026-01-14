@@ -1,0 +1,22 @@
+{
+    "name": "swiss-data-atlas",
+    "version": "1.0.0",
+    "description": "Swiss Data Atlas - Company Data Landing Page",
+    "scripts": {
+        "build:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --minify",
+        "watch:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --watch",
+        "build": "npm run build:css",
+        "dev": "npm run watch:css"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.0"
+    },
+    "keywords": [
+        "swiss",
+        "data",
+        "company",
+        "snowflake"
+    ],
+    "author": "BI Concepts",
+    "license": "PROPRIETARY"
+}

@@ -5,11 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swiss Data Atlas | BI Concepts</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="alternate icon" href="images/favicon.svg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://swissdataatlas.ch/">
+
+    <!-- Font Preloading for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Swiss Data Atlas",
+        "url": "https://swissdataatlas.ch",
+        "logo": "https://swissdataatlas.ch/images/logo-bc.svg",
+        "description": "Swiss company data platform providing structured business insights for compliance and market analysis via Snowflake Marketplace.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Oberdorfstrasse 13",
+            "addressLocality": "Pfäffikon",
+            "postalCode": "8808",
+            "addressCountry": "CH"
+        },
+        "parentOrganization": {
+            "@type": "Organization",
+            "name": "BI Concepts",
+            "url": "https://www.bi-concepts.ch"
+        },
+        "sameAs": [
+            "https://www.bi-concepts.ch"
+        ]
+    }
+    </script>
+
+    <!-- Built Tailwind CSS (production) -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <!-- Tailwind CDN fallback for development -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap');
-
         body {
             background-color: #ffffff;
             color: #101010;
@@ -281,6 +328,9 @@
 
 <body class="transition-colors duration-300">
 
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-transparent backdrop-blur-md" style="height: 80px;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
@@ -299,6 +349,12 @@
                         <a href="#compliance" data-t="nav-compliance" class="nav-link-webflow"></a>
                     </div>
 
+                    <!-- Mobile Menu Button -->
+                    <button class="hamburger-btn md:hidden" onclick="toggleMobileMenu()"
+                        aria-label="Toggle navigation menu" aria-expanded="false" id="mobile-menu-btn">
+                        <i data-lucide="menu" class="w-6 h-6 text-white" id="menu-icon"></i>
+                    </button>
+
                     <!-- Language Switcher -->
                     <div
                         class="language-switcher flex bg-white/10 backdrop-blur-sm p-0.5 sm:p-1 rounded-lg text-[10px] sm:text-xs font-bold flex-shrink-0">
@@ -316,9 +372,24 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#features" data-t="nav-features" onclick="closeMobileMenu()"></a>
+        <a href="#methodology" data-t="nav-method" onclick="closeMobileMenu()"></a>
+        <a href="#compliance" data-t="nav-compliance" onclick="closeMobileMenu()"></a>
+        <a href="mailto:sda@bi-concepts.ch" onclick="closeMobileMenu()">Email Us</a>
+    </div>
+
     <!-- Hero Section -->
-    <header class="pt-32 pb-20 gradient-bg text-white overflow-hidden">
+    <header id="main-content" class="pt-32 pb-20 gradient-bg text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <!-- Hero Headline -->
+            <div class="text-center mb-10 max-w-3xl">
+                <p class="section-tag mb-4" data-t="hero-tag"></p>
+                <h1 class="heading__1 heading-light mb-6" data-t="hero-title"></h1>
+                <p class="text-lg sm:text-xl text-slate-300 leading-relaxed" data-t="hero-subtitle"></p>
+            </div>
+
             <div class="w-full max-w-2xl relative">
                 <div class="absolute -inset-4 bg-blue-500/20 blur-3xl rounded-full"></div>
                 <div class="glass-card rounded-2xl p-4 sm:p-8 relative border border-white/10 overflow-hidden">
@@ -413,7 +484,7 @@
             <div class="lg:flex items-center gap-12 xl:gap-16">
                 <div class="lg:w-1/2">
                     <h2 class="heading__1 heading-light mb-4 sm:mb-6" data-t="method-title"></h2>
-                    <p class="text-sm sm:text-base lg:text-lg text-slate-400 mb-8 sm:mb-10 leading-relaxed"
+                    <p class="text-sm sm:text-base lg:text-lg text-slate-300 mb-8 sm:mb-10 leading-relaxed"
                         data-t="method-desc"></p>
                     <div class="space-y-6 sm:space-y-8">
                         <div class="flex gap-4">
@@ -422,7 +493,7 @@
                                 1</div>
                             <div>
                                 <h4 class="font-bold text-sm sm:text-base mb-1" data-t="method-1-title"></h4>
-                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-t="method-1-desc"></p>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-t="method-1-desc"></p>
                             </div>
                         </div>
                         <div class="flex gap-4">
@@ -431,7 +502,7 @@
                                 2</div>
                             <div>
                                 <h4 class="font-bold text-sm sm:text-base mb-1" data-t="method-2-title"></h4>
-                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-t="method-2-desc"></p>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-t="method-2-desc"></p>
                             </div>
                         </div>
                         <div class="flex gap-4">
@@ -440,13 +511,14 @@
                                 3</div>
                             <div>
                                 <h4 class="font-bold text-sm sm:text-base mb-1" data-t="method-3-title"></h4>
-                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-t="method-3-desc"></p>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-t="method-3-desc"></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-1/2 mt-12 lg:mt-0 flex justify-center">
-                    <div class="glass-card p-10 sm:p-14 lg:p-16 rounded-full border-2 border-white/5 animate-pulse">
+                    <div class="glass-card p-10 sm:p-14 lg:p-16 rounded-full border-2 border-white/5 animate-pulse"
+                        loading="lazy">
                         <i data-lucide="refresh-cw" class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
                             style="color: #0095f2;"></i>
                     </div>
@@ -499,15 +571,16 @@
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs">
             <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                <img src="images/logo-bc.svg" alt="Swiss Data Atlas" class="w-6 h-6" />
+                <img src="images/logo-bc.svg" alt="Swiss Data Atlas" class="w-6 h-6" loading="lazy" />
                 <span class="font-bold text-white">Swiss Data Atlas</span>
                 <span>© 2026 <a href="https://www.bi-concepts.ch" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-colors underline">BI Concepts</a>.</span>
             </div>
             <div class="flex space-x-8">
-                <a href="impressum.html" class="hover:text-white transition-colors">Impressum</a>
-                <a href="privacy-policy.html" class="hover:text-white transition-colors">Datenschutz</a>
-                <a href="terms-and-conditions.html" class="hover:text-white transition-colors">Terms and Conditions</a>
+                <a href="impressum.html" class="hover:text-white transition-colors" data-t="footer-impressum"></a>
+                <a href="privacy-policy.html" class="hover:text-white transition-colors" data-t="footer-privacy"></a>
+                <a href="terms-and-conditions.html" class="hover:text-white transition-colors"
+                    data-t="footer-terms"></a>
             </div>
         </div>
     </footer>
@@ -519,6 +592,8 @@
                 "nav-method": "Methodik",
                 "nav-compliance": "Strategie",
                 "hero-tag": "Snowflake Marketplace Listing",
+                "hero-title": "Schweizer Firmendaten. Strukturiert. Analysierbar.",
+                "hero-subtitle": "Erschliessen Sie das volle Potenzial Schweizer Unternehmensdaten mit unserer umfassenden Datenplattform – direkt verfügbar im Snowflake Marketplace.",
                 "hero-cta-main": "Jetzt Zugang anfragen",
                 "stats-entities": "Aktive Firmenprofile",
                 "stats-update": "Update-Intervall",
@@ -548,13 +623,16 @@
                 "fsi-2-desc": "Identifizieren Sie Branchenkonzentrationen und sektorale Abhängigkeiten basierend auf standardisierten Klassifizierungen.",
                 "cta-title": "Bereit für datengesteuerte Insights?",
                 "footer-impressum": "Impressum",
-                "footer-privacy": "Datenschutz"
+                "footer-privacy": "Datenschutz",
+                "footer-terms": "AGB"
             },
             en: {
                 "nav-features": "Capabilities",
                 "nav-method": "Methodology",
                 "nav-compliance": "Strategy",
                 "hero-tag": "Snowflake Marketplace Listing",
+                "hero-title": "Swiss Company Data. Structured. Queryable.",
+                "hero-subtitle": "Unlock the full potential of Swiss business data with our comprehensive data platform – available directly on the Snowflake Marketplace.",
                 "hero-cta-main": "Request Access Now",
                 "stats-entities": "Active Company Profiles",
                 "stats-update": "Update Interval",
@@ -583,8 +661,9 @@
                 "fsi-2-title": "Exposure Analysis",
                 "fsi-2-desc": "Identify industry concentrations and sectoral dependencies based on standardized classifications.",
                 "cta-title": "Ready for Data-Driven Insights?",
-                "footer-impressum": "Impressum",
-                "footer-privacy": "Privacy Policy"
+                "footer-impressum": "Imprint",
+                "footer-privacy": "Privacy Policy",
+                "footer-terms": "Terms & Conditions"
             }
         };
 
@@ -611,10 +690,57 @@
             }
         }
 
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuIcon = document.getElementById('menu-icon');
+            const isOpen = mobileMenu.classList.contains('active');
+
+            mobileMenu.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', !isOpen);
+
+            // Toggle icon between menu and X
+            if (isOpen) {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuIcon = document.getElementById('menu-icon');
+
+            mobileMenu.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuIcon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        }
+
         lucide.createIcons();
 
-        // Initialize page with default language (German)
-        setLang('de');
+        // Language persistence using localStorage
+        function getStoredLang() {
+            return localStorage.getItem('sda-lang') || 'de';
+        }
+
+        function storeLang(lang) {
+            localStorage.setItem('sda-lang', lang);
+        }
+
+        // Override setLang to include persistence
+        const originalSetLang = setLang;
+        setLang = function (lang) {
+            originalSetLang(lang);
+            storeLang(lang);
+        };
+
+        // Initialize page with stored language preference
+        const storedLang = getStoredLang();
+        setLang(storedLang);
 
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
@@ -631,6 +757,13 @@
                 } else {
                     nav.classList.remove('shadow-md');
                 }
+            }
+        });
+
+        // Close mobile menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
             }
         });
     </script>

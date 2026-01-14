@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build outputs (committed for GitHub Pages, but can be rebuilt)
+# css/tailwind.css
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
