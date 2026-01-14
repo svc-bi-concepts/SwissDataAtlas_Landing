@@ -1,0 +1,2 @@
+# Disable Jekyll processing for GitHub Pages
+# This allows the site to be served as-is without Jekyll transformation
